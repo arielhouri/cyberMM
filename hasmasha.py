@@ -26,24 +26,23 @@ def run_cmd(cmd: str) -> str:
 
     return response.text
 def turn_led(is_on: bool) -> None:
+    start_time = time.time()
     run_cmd(f"echo {int(is_on)} > /proc/tplink/led_wlan_24G")
-
-def delay() -> None:
-    time.sleep(0.5)
+    time.sleep(1 - (time.time() - start_time))
 
 def signal_char(ch: chr) -> None:
     bits = list(map(int, format(ord(ch), '08b')))
     for bit in bits:
         turn_led(bit)
-        delay()
 
 def signal_str(string: str) -> None:
     turn_led(1)
-    delay()
     for ch in string:
         signal_char(ch)
     for i in range(16):
         turn_led(0)
-        delay()
 
-signal_str("z")
+while True:
+     turn_led(0)
+     time.sleep(1)
+     signal_str(input("Enter a message: "))
