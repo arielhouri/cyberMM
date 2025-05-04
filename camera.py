@@ -9,8 +9,8 @@ camera_index = 0
 cap = cv2.VideoCapture(camera_index)
 started = False
 # Optional: Set camera exposure
-#cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
-#cap.set(cv2.CAP_PROP_EXPOSURE, -6)
+cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
+cap.set(cv2.CAP_PROP_EXPOSURE, -6)
 
 print("The binary is: ", end="")
 if not cap.isOpened():
@@ -56,7 +56,8 @@ while True:
         binary = binary[:-16]  # Remove the last 16 characters
         break
     b = time.time()
-    time.sleep(0.5-(b-a))
+    time.sleep(1-(b-a))
+
 # Pad with leading zeros until length is divisible by 8
 while len(binary) % 8 != 0:
     binary = binary + '0'
