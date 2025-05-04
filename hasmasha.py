@@ -34,7 +34,8 @@ def signal_char(ch: chr) -> None:
     bits = list(map(int, format(ord(ch), '08b')))
     for bit in bits:
         turn_led(bit)
-
+        print(bit, end="")
+    print("")
 def signal_str(string: str) -> None:
     turn_led(1)
     for ch in string:
@@ -45,4 +46,5 @@ def signal_str(string: str) -> None:
 while True:
      turn_led(0)
      time.sleep(1)
-     signal_str(input("Enter a message: "))
+     msg = input("Enter a message: ")
+     signal_str(msg)
