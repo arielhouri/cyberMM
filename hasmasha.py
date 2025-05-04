@@ -29,7 +29,7 @@ def turn_led(is_on: bool) -> None:
     run_cmd(f"echo {int(is_on)} > /proc/tplink/led_wlan_24G")
 
 def delay() -> None:
-    time.sleep(5)
+    time.sleep(0.5)
 
 def signal_char(ch: chr) -> None:
     bits = list(map(int, format(ord(ch), '08b')))

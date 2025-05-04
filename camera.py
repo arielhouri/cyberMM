@@ -56,7 +56,7 @@ while True:
         binary = binary[:-16]  # Remove the last 16 characters
         break
     b = time.time()
-    print(b-a)
+    time.sleep(0.5-(b-a))
 # Pad with leading zeros until length is divisible by 8
 while len(binary) % 8 != 0:
     binary = binary + '0'
